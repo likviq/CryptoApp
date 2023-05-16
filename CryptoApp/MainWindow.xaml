@@ -1,0 +1,108 @@
+﻿<Window x:Class="CryptoApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CryptoApp"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="1080" Width="1920">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+
+
+        <StackPanel Grid.Column="0" Background="#F9F9F9">
+            <StackPanel Orientation="Horizontal" Width="325" HorizontalAlignment="Left" Margin="39 69 10 25">
+                <Image Source="D:\study\images\home.png" Width="25"/>
+                <TextBlock Text="Home" VerticalAlignment="Center" Margin="20 5 0 0" FontFamily="Inter" FontSize="24" Foreground="#4F5660"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Width="325" HorizontalAlignment="Left" Margin="39 0 10 25">
+                <Image Source="D:\study\images\uploadFile.png" Width="25"/>
+                <TextBlock Text="Upload file" VerticalAlignment="Center" Margin="20 5 0 0" FontFamily="Inter" FontSize="24" Foreground="#4F5660"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Width="325" HorizontalAlignment="Left" Margin="39 0 10 25">
+                <Image Source="D:\study\images\afterUpload.png" Width="25"/>
+                <TextBlock Text="After upload" VerticalAlignment="Center" Margin="20 5 0 0" FontFamily="Inter" FontSize="24" Foreground="#4F5660"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Width="325" HorizontalAlignment="Left" Margin="39 0 10 25">
+                <Image Source="D:\study\images\capture.png" Width="25"/>
+                <TextBlock Text="Capture" VerticalAlignment="Center" Margin="20 5 0 0" FontFamily="Inter" FontSize="24" Foreground="#4F5660"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Width="325" HorizontalAlignment="Left" Margin="39 0 10 25">
+                <Image Source="D:\study\images\afterCapture.png" Width="25"/>
+                <TextBlock Text="After capture" VerticalAlignment="Center" Margin="20 5 0 0" FontFamily="Inter" FontSize="24" Foreground="#4F5660"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Width="325" HorizontalAlignment="Left" Margin="39 0 10 25">
+                <Image Source="D:\study\images\settingsImage.png" Width="25"/>
+                <TextBlock Text="Settings" VerticalAlignment="Center" Margin="20 5 0 0" FontFamily="Inter" FontSize="24" Foreground="#4F5660"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Width="325" HorizontalAlignment="Left" Margin="39 0 10 25">
+                <Image Source="D:\study\images\tools.png" Width="25"/>
+                <TextBlock Text="Tools" VerticalAlignment="Center" Margin="20 5 0 0" FontFamily="Inter" FontSize="24" Foreground="#4F5660"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Width="325" HorizontalAlignment="Left" Margin="39 0 10 25">
+                <Image Source="D:\study\images\history.png" Width="25"/>
+                <TextBlock Text="History" VerticalAlignment="Center" Margin="20 5 0 0" FontFamily="Inter" FontSize="24" Foreground="#4F5660"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Width="325" HorizontalAlignment="Left" Margin="39 0 10 25">
+                <Image Source="D:\study\images\help.png" Width="25"/>
+                <TextBlock Text="Help" VerticalAlignment="Center" Margin="20 5 0 0" FontFamily="Inter" FontSize="24" Foreground="#4F5660"/>
+            </StackPanel>
+        </StackPanel>
+
+        <StackPanel Grid.Column="1" Margin="126 69 0 0">
+            <StackPanel Orientation="Horizontal" Margin="0 0 0 48">
+                <Button Width="407" Height="50" Margin="0 0 9 0" Background="#F9F9F9" BorderThickness="0" Content="Filename" FontSize="24" FontFamily="Inter" Foreground="#4F5660">
+                    <Button.Effect>
+                        <DropShadowEffect BlurRadius="4" Direction="-90"
+                                  RenderingBias="Performance" Opacity="0.2" ShadowDepth="2"/>
+                    </Button.Effect>
+                </Button>
+                <Button Width="210" Height="50" Margin="0 0 9 0" Background="#F9F9F9" BorderThickness="0" Content="Status" FontSize="24" FontFamily="Inter" Foreground="#4F5660">
+                    <Button.Effect>
+                        <DropShadowEffect BlurRadius="4" Direction="-90"
+                                  RenderingBias="Performance" Opacity="0.2" ShadowDepth="2"/>
+                    </Button.Effect>
+                </Button>
+                <Button Width="166" Height="50" Margin="0 0 9 0" Background="#F9F9F9" BorderThickness="0" Content="Type" FontSize="24" FontFamily="Inter" Foreground="#4F5660">
+                    <Button.Effect>
+                        <DropShadowEffect BlurRadius="4" Direction="-90"
+                                  RenderingBias="Performance" Opacity="0.2" ShadowDepth="2"/>
+                    </Button.Effect>
+                </Button>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal">
+                <StackPanel Orientation="Vertical" Width="416">
+                    <TextBlock FontFamily="Inter" FontSize="24" Foreground="#4F5660" Margin="0 0 0 20">2022-09-09_16-54-40.png</TextBlock>
+                    <TextBlock FontFamily="Inter" FontSize="24" Foreground="#4F5660" Margin="0 0 0 20">image2022-09-09_16-54-40.png</TextBlock>
+                    <TextBlock FontFamily="Inter" FontSize="24" Foreground="#4F5660" Margin="0 0 0 20">lab1.xlsx</TextBlock>
+                    <TextBlock FontFamily="Inter" FontSize="24" Foreground="#4F5660" Margin="0 0 0 20">2022-09-09_16-54-59.png</TextBlock>
+                </StackPanel>
+
+                <StackPanel Orientation="Vertical" Width="220">
+                    <TextBlock FontFamily="Inter" FontSize="24" Foreground="#4F5660" Margin="0 0 0 20">Error</TextBlock>
+                    <TextBlock FontFamily="Inter" FontSize="24" Foreground="#4F5660" Margin="0 0 0 20">Error</TextBlock>
+                    <TextBlock FontFamily="Inter" FontSize="24" Foreground="#4F5660" Margin="0 0 0 20">Done</TextBlock>
+                    <TextBlock FontFamily="Inter" FontSize="24" Foreground="#4F5660" Margin="0 0 0 20">Done</TextBlock>
+                </StackPanel>
+                <StackPanel Orientation="Vertical" Width="166">
+                    <TextBlock FontFamily="Inter" FontSize="24" Foreground="#4F5660" Margin="0 0 0 20">Image</TextBlock>
+                    <TextBlock FontFamily="Inter" FontSize="24" Foreground="#4F5660" Margin="0 0 0 20">Image</TextBlock>
+                    <TextBlock FontFamily="Inter" FontSize="24" Foreground="#4F5660" Margin="0 0 0 20">File</TextBlock>
+                    <TextBlock FontFamily="Inter" FontSize="24" Foreground="#4F5660" Margin="0 0 0 20">Image</TextBlock>
+                </StackPanel>
+            </StackPanel>
+
+
+        </StackPanel>
+
+        <StackPanel Name="third_grid" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center" Background="#F9F9F9">
+            <Image Source="D:\study\images\extendedExamle.png" Width="500"/>
+        </StackPanel>
+
+    </Grid>
+</Window>
