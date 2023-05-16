@@ -23,6 +23,32 @@ namespace CryptoApp
         public MainWindow()
         {
             InitializeComponent();
+            MainFrame.Navigate(new MainPage());
+        }
+
+        private void HomePageClick(object sender, MouseButtonEventArgs e)
+        {
+            MainFrame_Navigating(new MainPage());
+        }
+
+        private void SearchPageClick(object sender, MouseButtonEventArgs e)
+        {
+            MainFrame_Navigating(new SearchPage());
+        }
+
+        private void ConvertPageClick(object sender, MouseButtonEventArgs e)
+        {
+            MainFrame_Navigating(new ConvertPage());
+        }
+
+        private void AboutPageClick(object sender, MouseButtonEventArgs e)
+        {
+            MainFrame_Navigating(new AboutPage());
+        }
+
+        private void MainFrame_Navigating(Page page)
+        {
+            MainFrame.Navigate(page);
         }
     }
 }
