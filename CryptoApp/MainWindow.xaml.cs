@@ -41,6 +41,11 @@ namespace CryptoApp
             MainFrame_Navigating(new ConvertPage());
         }
 
+        private void AboutPageClick(object sender, MouseButtonEventArgs e)
+        {
+            MainFrame_Navigating(new AboutPage());
+        }
+
         private void MainFrame_Navigating(Page page)
         {
             MainFrame.Navigate(page);
