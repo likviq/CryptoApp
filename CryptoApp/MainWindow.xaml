@@ -21,7 +21,7 @@
                 <Image Source="D:\study\images\uploadFile.png" Width="25"/>
                 <TextBlock Text="Search" VerticalAlignment="Center" Margin="20 5 0 0" FontFamily="Inter" FontSize="24" Foreground="#4F5660"/>
             </StackPanel>
-            <StackPanel Orientation="Horizontal" Width="325" HorizontalAlignment="Left" Margin="39 0 10 25">
+            <StackPanel Orientation="Horizontal" Width="325" HorizontalAlignment="Left" Margin="39 0 10 25" PreviewMouseLeftButtonUp="ConvertPageClick">
                 <Image Source="D:\study\images\settingsImage.png" Width="25"/>
                 <TextBlock Text="Converter" VerticalAlignment="Center" Margin="20 5 0 0" FontFamily="Inter" FontSize="24" Foreground="#4F5660"/>
             </StackPanel>

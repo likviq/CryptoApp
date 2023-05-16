@@ -1,0 +1,79 @@
+﻿<Page x:Class="CryptoApp.ConvertPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:CryptoApp"
+      mc:Ignorable="d" 
+      d:DesignHeight="700" d:DesignWidth="1500"
+      Title="ConvertPage">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+
+
+        <StackPanel Grid.Column="0" Margin="126 69 0 0">
+            
+            <StackPanel Orientation="Horizontal" Margin="0 0 0 0">
+                <TextBlock Text="From:" Width="200" Height="50" Margin="0 0 9 0" FontSize="24" FontFamily="Inter" Foreground="#4F5660">
+                    <TextBlock.Effect>
+                        <DropShadowEffect BlurRadius="4" Direction="-90" RenderingBias="Performance" Opacity="0.2" ShadowDepth="2"/>
+                    </TextBlock.Effect>
+                </TextBlock>
+                <TextBlock Text="To:" Width="200" Height="50" Margin="10 0 9 0" FontSize="24" FontFamily="Inter" Foreground="#4F5660">
+                    <TextBlock.Effect>
+                        <DropShadowEffect BlurRadius="4" Direction="-90" RenderingBias="Performance" Opacity="0.2" ShadowDepth="2"/>
+                    </TextBlock.Effect>
+                </TextBlock>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Margin="0 0 0 30">
+                <ComboBox Name="ConvertFrom" SelectedIndex="0" Width="200" Height="50" Margin="0 0 9 0" FontSize="24" FontFamily="Inter" Foreground="#4F5660" SelectionChanged="ChangeCurrencyFrom">
+                    <ComboBox.Effect>
+                        <DropShadowEffect BlurRadius="4" Direction="-90"
+                                  RenderingBias="Performance" Opacity="0.2" ShadowDepth="2"/>
+                    </ComboBox.Effect>
+                    
+                    <ComboBoxItem Content="Option 1" />
+                    <ComboBoxItem Content="Option 2" />
+                    <ComboBoxItem Content="Option 3" />
+                </ComboBox>
+
+                <ComboBox Name="ConvertTo" SelectedIndex="0" Width="200" Height="50" Margin="10 0 9 0" FontSize="24" FontFamily="Inter" Foreground="#4F5660" SelectionChanged="ChangeCurrencyTo">
+                    <ComboBox.Effect>
+                        <DropShadowEffect BlurRadius="4" Direction="-90"
+                                  RenderingBias="Performance" Opacity="0.2" ShadowDepth="2"/>
+                    </ComboBox.Effect>
+                    <ComboBoxItem Content="Option 1" />
+                    <ComboBoxItem Content="Option 2" />
+                    <ComboBoxItem Content="Option 3" />
+                </ComboBox>
+            </StackPanel>
+
+
+
+            <StackPanel Orientation="Horizontal" Margin="0 0 0 25">
+                <TextBox x:Name="convertFromTextBox" Width="150" Height="50" Margin="0 0 15 0" FontSize="24" FontFamily="Inter" Foreground="#4F5660" BorderBrush="Transparent">
+                    <TextBox.Effect>
+                        <DropShadowEffect BlurRadius="4" Direction="-90" RenderingBias="Performance" Opacity="0.2" ShadowDepth="2"/>
+                    </TextBox.Effect>
+                </TextBox>
+                <Button Width="90" Height="50" Background="#F9F9F9" BorderThickness="0" Content="Convert" FontSize="24" FontFamily="Inter" Foreground="#4F5660" Click="ConvertButtonClick">
+                    <Button.Effect>
+                        <DropShadowEffect BlurRadius="4" Direction="-90" RenderingBias="Performance" Opacity="0.2" ShadowDepth="2"/>
+                    </Button.Effect>
+                </Button>
+                <TextBlock x:Name="convertToTextBox" Width="150" Height="50" Margin="15 0 15 0" FontSize="24" FontFamily="Inter" Foreground="#4F5660">
+                    <TextBlock.Effect>
+                        <DropShadowEffect BlurRadius="4" Direction="-90" RenderingBias="Performance" Opacity="0.2" ShadowDepth="2"/>
+                    </TextBlock.Effect>
+                </TextBlock>
+            </StackPanel>
+
+
+        </StackPanel>
+    </Grid>
+</Page>
