@@ -26,10 +26,19 @@ namespace CryptoApp
             MainFrame.Navigate(new MainPage());
         }
 
-        // Обробник події для навігації між сторінками
-        private void MainFrame_Navigating(object sender, NavigatingCancelEventArgs e)
+        private void HomePageClick(object sender, MouseButtonEventArgs e)
         {
-            // Виконати додаткову логіку або перевірки перед переходом на нову сторінку
+            MainFrame_Navigating(new MainPage());
+        }
+
+        private void SearchPageClick(object sender, MouseButtonEventArgs e)
+        {
+            MainFrame_Navigating(new SearchPage());
+        }
+
+        private void MainFrame_Navigating(Page page)
+        {
+            MainFrame.Navigate(page);
         }
     }
 }

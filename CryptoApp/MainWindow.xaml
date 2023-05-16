@@ -13,11 +13,11 @@
         </Grid.ColumnDefinitions>
 
         <StackPanel Grid.Column="0" Background="#F9F9F9">
-            <StackPanel Orientation="Horizontal" Width="325" HorizontalAlignment="Left" Margin="39 69 10 25">
+            <StackPanel Orientation="Horizontal" Width="325" HorizontalAlignment="Left" Margin="39 69 10 25" PreviewMouseLeftButtonUp="HomePageClick">
                 <Image Source="D:\study\images\home.png" Width="25"/>
                 <TextBlock Text="Home" VerticalAlignment="Center" Margin="20 5 0 0" FontFamily="Inter" FontSize="24" Foreground="#4F5660"/>
             </StackPanel>
-            <StackPanel Orientation="Horizontal" Width="325" HorizontalAlignment="Left" Margin="39 0 10 25">
+            <StackPanel Orientation="Horizontal" Width="325" HorizontalAlignment="Left" Margin="39 0 10 25" PreviewMouseLeftButtonUp="SearchPageClick">
                 <Image Source="D:\study\images\uploadFile.png" Width="25"/>
                 <TextBlock Text="Search" VerticalAlignment="Center" Margin="20 5 0 0" FontFamily="Inter" FontSize="24" Foreground="#4F5660"/>
             </StackPanel>
