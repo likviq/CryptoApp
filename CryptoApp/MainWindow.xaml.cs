@@ -23,6 +23,13 @@ namespace CryptoApp
         public MainWindow()
         {
             InitializeComponent();
+            MainFrame.Navigate(new MainPage());
+        }
+
+        // Обробник події для навігації між сторінками
+        private void MainFrame_Navigating(object sender, NavigatingCancelEventArgs e)
+        {
+            // Виконати додаткову логіку або перевірки перед переходом на нову сторінку
         }
     }
 }
