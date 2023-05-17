@@ -26,17 +26,23 @@ namespace CryptoApp
         public MainWindow()
         {
             InitializeComponent();
-            MainFrame.Navigate(new MainPage());
         }
 
         public MainWindow(ICryptoAPI cryptoAPI) : this()
         {
             _cryptoAPI = cryptoAPI;
+            OpenMainPage();
+        }
+
+        private void OpenMainPage()
+        {
+            MainPage mainPage = new MainPage(_cryptoAPI);
+            MainFrame_Navigating(mainPage);
         }
 
         private void HomePageClick(object sender, MouseButtonEventArgs e)
         {
-            MainFrame_Navigating(new MainPage());
+            OpenMainPage();
         }
 
         private void SearchPageClick(object sender, MouseButtonEventArgs e)

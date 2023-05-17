@@ -8,9 +8,9 @@ namespace CryptoApp.Models.ViewModels
 {
     public class CryptoCurrenciesViewModel
     {
-        public float Rank { get; set; }
-        public string Id { get; set; }
+        public int Rank { get; set; }
+        public string VolumeUsd24Hr { get; set; }
         public string Name { get; set; }
-        public decimal Price { get; set; }
+        public string priceUsd { get; set; }
     }
 }
