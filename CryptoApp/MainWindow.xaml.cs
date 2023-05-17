@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CryptoApp.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,10 +21,17 @@ namespace CryptoApp
     /// </summary>
     public partial class MainWindow : Window
     {
+        private readonly ICryptoAPI _cryptoAPI;
+
         public MainWindow()
         {
             InitializeComponent();
             MainFrame.Navigate(new MainPage());
+        }
+
+        public MainWindow(ICryptoAPI cryptoAPI) : this()
+        {
+            _cryptoAPI = cryptoAPI;
         }
 
         private void HomePageClick(object sender, MouseButtonEventArgs e)
@@ -33,7 +41,8 @@ namespace CryptoApp
 
         private void SearchPageClick(object sender, MouseButtonEventArgs e)
         {
-            MainFrame_Navigating(new SearchPage());
+            SearchPage searchPage = new SearchPage(_cryptoAPI);
+            MainFrame_Navigating(searchPage);
         }
 
         private void ConvertPageClick(object sender, MouseButtonEventArgs e)

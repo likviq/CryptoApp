@@ -1,4 +1,7 @@
-﻿using System;
+﻿using CryptoApp.Interfaces;
+using CryptoApp.Services;
+using Microsoft.Extensions.DependencyInjection;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -8,10 +11,27 @@ using System.Windows;
 
 namespace CryptoApp
 {
-    /// <summary>
-    /// Interaction logic for App.xaml
-    /// </summary>
     public partial class App : Application
     {
+        private void OnStartup(object sender, StartupEventArgs e)
+        {
+            var services = new ServiceCollection();
+
+            services.AddSingleton<ICryptoAPI, CryptoAPI>();
+
+            services.AddSingleton<MainWindow>(serviceProvider =>
+            {
+                var cryptoAPI = serviceProvider.GetRequiredService<ICryptoAPI>();
+                return new MainWindow(cryptoAPI);
+            });
+
+            var serviceProvider = services.BuildServiceProvider();
+
+            var mainWindow = serviceProvider.GetRequiredService<MainWindow>();
+            Application.Current.MainWindow = mainWindow;
+
+            mainWindow.Show();
+        }
     }
 }
+
