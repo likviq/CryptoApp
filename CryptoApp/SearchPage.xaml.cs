@@ -36,5 +36,23 @@ namespace CryptoApp
 
             cryptoListBox.ItemsSource = cryptoCurrencies;
         }
+
+        private void HyperlinkButton_Click(object sender, RoutedEventArgs e)
+        {
+            string id = (sender as Button)?.CommandParameter?.ToString();
+
+            if (string.IsNullOrEmpty(id))
+            {
+                
+            }
+
+            MainWindow mainWindow = (MainWindow)Window.GetWindow(this);
+            if (mainWindow == null)
+            {
+
+            }
+
+            mainWindow.OpenDetailsPage(id);
+        }
     }
 }

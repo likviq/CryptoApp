@@ -9,7 +9,10 @@ namespace CryptoApp.Interfaces
 {
     public interface ICryptoAPI
     {
+        Task<List<string>> GetCurrencyNames();
         Task<List<SearchCryptoCurrenciesViewModel>?> GetCryptoCurrencies(string search);
         Task<List<CryptoCurrenciesViewModel>?> GetCryptoCurrencies();
+        Task<CoinDetailsViewModel> GetCoinDetails(string id);
+        Task<double?> GetCoinPrice(string id);
     }
 }

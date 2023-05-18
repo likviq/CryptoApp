@@ -34,10 +34,16 @@ namespace CryptoApp
             OpenMainPage();
         }
 
-        private void OpenMainPage()
+        public void OpenMainPage()
         {
             MainPage mainPage = new MainPage(_cryptoAPI);
             MainFrame_Navigating(mainPage);
+        }
+
+        public void OpenDetailsPage(string id)
+        {
+            DetailsPage detailsPage = new DetailsPage(_cryptoAPI, id);
+            MainFrame_Navigating(detailsPage);
         }
 
         private void HomePageClick(object sender, MouseButtonEventArgs e)
@@ -53,7 +59,8 @@ namespace CryptoApp
 
         private void ConvertPageClick(object sender, MouseButtonEventArgs e)
         {
-            MainFrame_Navigating(new ConvertPage());
+            ConvertPage convertPage = new ConvertPage(_cryptoAPI);
+            MainFrame_Navigating(convertPage);
         }
 
         private void AboutPageClick(object sender, MouseButtonEventArgs e)
