@@ -1,6 +1,7 @@
 ﻿using CryptoApp.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -35,6 +36,30 @@ namespace CryptoApp
         {
             var coinDetails = await _cryptoAPI.GetCoinDetails(id);
             DataContext = coinDetails;
+        }
+
+        private void OpenLinkInBrowser(string url)
+        {
+            try
+            {
+                Process.Start(new ProcessStartInfo
+                {
+                    FileName = url,
+                    UseShellExecute = true
+                });
+            }
+            catch (Exception ex)
+            {
+                // Обробка помилки, якщо не вдалося відкрити посилання
+                Console.WriteLine($"Помилка при відкритті посилання: {ex.Message}");
+            }
+        }
+
+        private void Hyperlink_RequestNavigate(object sender, RequestNavigateEventArgs e)
+        {
+            string url = e.Uri.ToString();
+            OpenLinkInBrowser(url);
+            e.Handled = true;
         }
     }
 }

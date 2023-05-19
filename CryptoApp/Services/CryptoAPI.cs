@@ -104,10 +104,10 @@ namespace CryptoApp.Services
                 return null;
             }
 
-            string jsonString = await response.Content.ReadAsStringAsync();
+            string responseBody = await response.Content.ReadAsStringAsync();
 
-            var jsonDictionary = JsonConvert.DeserializeObject<CoinDetailsViewModel>(jsonString);
-            return jsonDictionary;
+            var coinDetails = await CoinJsonInfo(responseBody);
+            return coinDetails;
         }
 
         public async Task<double?> GetCoinPrice(string id)
@@ -132,6 +132,44 @@ namespace CryptoApp.Services
             var price = Convert.ToDouble(currencyPrice, new CultureInfo("en-US"));
 
             return price;
+        }
+
+        private async Task<CoinDetailsViewModel> CoinJsonInfo(string responseBody)
+        {
+            dynamic data = JsonConvert.DeserializeObject(responseBody);
+
+            string name = data["localization"]["en"];
+            string description = data["description"]["en"];
+            float price = data["market_data"]["current_price"]["usd"];
+            float volume = data["market_data"]["total_volume"]["usd"];
+            float priceChange24h = data["market_data"]["price_change_24h"];
+            
+            List<MarketDetails> markets = new List<MarketDetails>();
+            foreach (var market in data["tickers"])
+            {
+                string marketName = market["market"]["name"];
+                string marketPrice = market["last"];
+                string marketUrl = market["trade_url"];
+                var marketEntry = new MarketDetails()
+                {
+                    Name = marketName,
+                    CoinPrice = marketPrice,
+                    Url = marketUrl
+                };
+                markets.Add(marketEntry);
+            }
+
+            CoinDetailsViewModel viewModel = new CoinDetailsViewModel()
+            {
+                Name = name,
+                Description = description,
+                Price = price,
+                Volume = volume,
+                PriceChange24h = priceChange24h,
+                Markets = markets
+            };
+
+            return viewModel;
         }
     }
 }
