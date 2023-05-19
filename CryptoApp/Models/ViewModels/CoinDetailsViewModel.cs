@@ -14,9 +14,6 @@ namespace CryptoApp.Models.ViewModels
         public float Volume { get; set; }
         public float PriceChange24h { get; set; }
         public List<MarketDetails> Markets { get; set; }
-        //public string Community_Score { get; set; }
-        //public Dictionary<string, object> Community_Data { get; set; }
-        //public Dictionary<string, float> Market_data { get; set; }
     }
     public class MarketDetails
     {

@@ -14,6 +14,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using OxyPlot;
+using OxyPlot.Series;
+using OxyPlot.Axes;
 
 namespace CryptoApp
 {
@@ -29,6 +32,7 @@ namespace CryptoApp
             _cryptoAPI = cryptoAPI;
             _id = id;
             GetCoinDetails(id);
+            PlotBuild(id);
             InitializeComponent();
         }
 
@@ -60,6 +64,29 @@ namespace CryptoApp
             string url = e.Uri.ToString();
             OpenLinkInBrowser(url);
             e.Handled = true;
+        }
+
+        private async void PlotBuild(string id)
+        {
+            var chartData = await _cryptoAPI.GetCoinPriceHistory(id);
+            var (timestamps, values) = chartData.Value;
+
+            var model = new PlotModel();
+            
+            var lineSeries = new LineSeries();
+            for (int i = 0; i < timestamps.Count; i++)
+            {
+                double x = DateTimeAxis.ToDouble(new DateTime(1970, 1, 1).AddMilliseconds(timestamps[i]));
+                double y = values[i];
+                lineSeries.Points.Add(new DataPoint(x, y));
+            }
+
+            model.Series.Add(lineSeries);
+
+            model.Axes.Add(new LinearAxis { Position = AxisPosition.Left });
+            model.Axes.Add(new DateTimeAxis { Position = AxisPosition.Bottom });
+
+            MyPlotView.Model = model;
         }
     }
 }

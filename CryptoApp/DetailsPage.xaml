@@ -4,6 +4,8 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:CryptoApp"
+      xmlns:oxy="clr-namespace:OxyPlot.Wpf;assembly=OxyPlot.Wpf"
+
       mc:Ignorable="d" 
       d:DesignHeight="1000" d:DesignWidth="1000"
       Title="DetailsPage">
@@ -11,31 +13,8 @@
     <Grid>
         <StackPanel Margin="20">
             <TextBlock Text="{Binding Name}" FontSize="24" Foreground="#4F5660" Margin="0 0 0 10"/>
-            <TextBlock Text="Description:" FontSize="16" Foreground="#4F5660" Margin="0 0 0 5"/>
-            <TextBlock Text="{Binding Description}" FontSize="14" Foreground="#4F5660" TextWrapping="Wrap"/>
-            <!--<ItemsControl ItemsSource="{Binding Description}">
-                <ItemsControl.ItemTemplate>
-                    <DataTemplate>
-                        <StackPanel Margin="10 0">
-                            <TextBlock Text="{Binding Value}" TextWrapping="Wrap">
-                                <TextBlock.Style>
-                                    <Style TargetType="TextBlock">
-                                        <Setter Property="Visibility" Value="Collapsed"/>
-                                        <Style.Triggers>
-                                            <DataTrigger Binding="{Binding Key}" Value="en">
-                                                <Setter Property="Visibility" Value="Visible"/>
-                                            </DataTrigger>
-                                            <DataTrigger Binding="{Binding Value}" Value="en">
-                                                <Setter Property="Visibility" Value="Visible"/>
-                                            </DataTrigger>
-                                        </Style.Triggers>
-                                    </Style>
-                                </TextBlock.Style>
-                            </TextBlock>
-                        </StackPanel>
-                    </DataTemplate>
-                </ItemsControl.ItemTemplate>
-            </ItemsControl>-->
+            <!--<TextBlock Text="Description:" FontSize="16" Foreground="#4F5660" Margin="0 0 0 5"/>
+            <TextBlock Text="{Binding Description}" FontSize="14" Foreground="#4F5660" TextWrapping="Wrap"/>-->
 
             <TextBlock Text="Price in USD: " FontSize="16" Foreground="#4F5660" Margin="0 20 0 5"/>
             <TextBlock Text="{Binding Price}" FontSize="14" Foreground="#4F5660"/>
@@ -44,17 +23,7 @@
             <TextBlock Text="PriceChange24h in USD: " FontSize="16" Foreground="#4F5660" Margin="0 20 0 5"/>
             <TextBlock Text="{Binding PriceChange24h}" FontSize="14" Foreground="#4F5660"/>
             <TextBlock Text="Markets: " FontSize="16" Foreground="#4F5660" Margin="0 20 0 5"/>
-            <!--<ListBox ItemsSource="{Binding Markets}">
-                <ListBox.ItemTemplate>
-                    <DataTemplate>
-                        <TextBlock>
-                            <Hyperlink NavigateUri="{Binding}" RequestNavigate="Hyperlink_RequestNavigate">
-                                <TextBlock Text="{Binding}" />
-                            </Hyperlink>
-                        </TextBlock>
-                    </DataTemplate>
-                </ListBox.ItemTemplate>
-            </ListBox>-->
+
             <ScrollViewer VerticalScrollBarVisibility="Auto" MaxHeight="200">
                 <ListView ItemsSource="{Binding Markets}">
                     <ListView.ItemTemplate>
@@ -81,20 +50,8 @@
                     </ListView.ItemTemplate>
                 </ListView>
             </ScrollViewer>
+            <oxy:PlotView x:Name="MyPlotView" Width="800" Height="300" HorizontalAlignment="Left" />
 
-
-
-            <!--<TextBlock Text="Community Data:" FontSize="16" Foreground="#4F5660" Margin="0 20 0 5"/>
-            <ItemsControl ItemsSource="{Binding Community_Data}">
-                <ItemsControl.ItemTemplate>
-                    <DataTemplate>
-                        <StackPanel Margin="10 0">
-                            <TextBlock Text="{Binding Key}" FontWeight="Bold"/>
-                            <TextBlock Text="{Binding Value}" TextWrapping="Wrap"/>
-                        </StackPanel>
-                    </DataTemplate>
-                </ItemsControl.ItemTemplate>
-            </ItemsControl>-->
         </StackPanel>
     </Grid>
 </Page>

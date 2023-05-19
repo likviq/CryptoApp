@@ -14,5 +14,6 @@ namespace CryptoApp.Interfaces
         Task<List<CryptoCurrenciesViewModel>?> GetCryptoCurrencies();
         Task<CoinDetailsViewModel> GetCoinDetails(string id);
         Task<double?> GetCoinPrice(string id);
+        Task<(List<float>, List<float>)?> GetCoinPriceHistory(string id);
     }
 }

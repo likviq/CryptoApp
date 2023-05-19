@@ -20,6 +20,7 @@ namespace CryptoApp.Services
         private readonly string searchCoinsEndpoint = "/coins/list";
         private readonly string coinCapUrl = "https://api.coincap.io/v2";
         private readonly string assetsEndpoint = "/assets";
+        private readonly string marketChartEndpoint = "/market_chart?vs_currency=usd&days=30";
 
         public CryptoAPI()
         {
@@ -170,6 +171,26 @@ namespace CryptoApp.Services
             };
 
             return viewModel;
+        }
+
+        public async Task<(List<float>, List<float>)?> GetCoinPriceHistory(string id)
+        {
+            HttpClient client = new HttpClient();
+
+            string url = $"{coinGeskoUrl}/coins/{id}{marketChartEndpoint}";
+            HttpResponseMessage response = await client.GetAsync(url);
+            if (!response.IsSuccessStatusCode)
+            {
+                return null;
+            }
+
+            string jsonResponse = await response.Content.ReadAsStringAsync();
+            var jsonData = JsonConvert.DeserializeObject<Dictionary<string, List<List<float>>>>(jsonResponse);
+
+            List<float> timestamps = jsonData["prices"].Select(x => x[0]).ToList();
+            List<float> values = jsonData["prices"].Select(x => x[1]).ToList();
+
+            return (timestamps, values);
         }
     }
 }
