@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CryptoApp.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,37 +21,49 @@ namespace CryptoApp
     /// </summary>
     public partial class ConvertPage : Page
     {
+        private readonly ICryptoAPI _cryptoAPI;
         private string currencyFrom;
         private string currencyTo;
-        public ConvertPage()
+        
+        public ConvertPage(ICryptoAPI cryptoAPI)
         {
+            _cryptoAPI = cryptoAPI;
+            SetCurrenciesDropdown();
             InitializeComponent();
+        }
+
+        private async void SetCurrenciesDropdown()
+        {
+            var currencyNames = await _cryptoAPI.GetCurrencyNames();
+            ConvertFrom.ItemsSource = currencyNames;
+            ConvertTo.ItemsSource = currencyNames;
         }
 
         private void ChangeCurrencyFrom(object sender, RoutedEventArgs e)
         {
-            string currencyFrom = ((ComboBoxItem)ConvertFrom.SelectedItem).Content.ToString();
+            currencyFrom = ConvertFrom.SelectedItem?.ToString();
         }
 
         private void ChangeCurrencyTo(object sender, RoutedEventArgs e)
         {
-            string currencyTo = ((ComboBoxItem)ConvertTo.SelectedItem).Content.ToString();
+            currencyTo = ConvertTo.SelectedItem?.ToString();
         }
 
-        private void ConvertButtonClick(object sender, RoutedEventArgs e)
+        private async void ConvertButtonClick(object sender, RoutedEventArgs e)
         {
             string convertFromValue = convertFromTextBox.Text;
-            float fromValue;
+            float convertValue;
 
-            bool success = float.TryParse(convertFromValue, out fromValue);
+            bool success = float.TryParse(convertFromValue, out convertValue);
 
             if (!success)
             {
                 MessageBox.Show("incorrect values");
                 return;
             }
-
-            convertToTextBox.Text = convertFromValue;
+            var convetFromPrice = await _cryptoAPI.GetCoinPrice(currencyFrom);
+            var convetToPrice = await _cryptoAPI.GetCoinPrice(currencyTo);
+            convertToTextBox.Text = $"{(convertValue * convetFromPrice) / convetToPrice}";
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CryptoApp.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,16 +21,38 @@ namespace CryptoApp
     /// </summary>
     public partial class SearchPage : Page
     {
-        public SearchPage()
+        private readonly ICryptoAPI _cryptoAPI;
+        public SearchPage(ICryptoAPI cryptoAPI)
         {
+            _cryptoAPI = cryptoAPI;
             InitializeComponent();
         }
 
-        private void SearchButton_Click(object sender, RoutedEventArgs e)
+        private async void SearchButton_Click(object sender, RoutedEventArgs e)
         {
             string searchText = searchTextBox.Text;
 
-            MessageBox.Show(searchText);
+            var cryptoCurrencies = await _cryptoAPI.GetCryptoCurrencies(searchText);
+
+            cryptoListBox.ItemsSource = cryptoCurrencies;
+        }
+
+        private void HyperlinkButton_Click(object sender, RoutedEventArgs e)
+        {
+            string id = (sender as Button)?.CommandParameter?.ToString();
+
+            if (string.IsNullOrEmpty(id))
+            {
+                
+            }
+
+            MainWindow mainWindow = (MainWindow)Window.GetWindow(this);
+            if (mainWindow == null)
+            {
+
+            }
+
+            mainWindow.OpenDetailsPage(id);
         }
     }
 }
