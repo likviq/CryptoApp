@@ -12,17 +12,17 @@
 
     <Grid>
         <StackPanel Margin="20">
-            <TextBlock Text="{Binding Name}" FontSize="24" Foreground="#4F5660" Margin="0 0 0 10"/>
+            <TextBlock Text="{Binding Name}" FontSize="24" Margin="0 0 0 10"/>
             <!--<TextBlock Text="Description:" FontSize="16" Foreground="#4F5660" Margin="0 0 0 5"/>
             <TextBlock Text="{Binding Description}" FontSize="14" Foreground="#4F5660" TextWrapping="Wrap"/>-->
 
-            <TextBlock Text="Price in USD: " FontSize="16" Foreground="#4F5660" Margin="0 20 0 5"/>
-            <TextBlock Text="{Binding Price}" FontSize="14" Foreground="#4F5660"/>
-            <TextBlock Text="Volume in USD: " FontSize="16" Foreground="#4F5660" Margin="0 20 0 5"/>
-            <TextBlock Text="{Binding Volume}" FontSize="14" Foreground="#4F5660"/>
-            <TextBlock Text="PriceChange24h in USD: " FontSize="16" Foreground="#4F5660" Margin="0 20 0 5"/>
-            <TextBlock Text="{Binding PriceChange24h}" FontSize="14" Foreground="#4F5660"/>
-            <TextBlock Text="Markets: " FontSize="16" Foreground="#4F5660" Margin="0 20 0 5"/>
+            <TextBlock Text="Price in USD: " FontSize="16" Margin="0 20 0 5"/>
+            <TextBlock Text="{Binding Price}" FontSize="14"/>
+            <TextBlock Text="Volume in USD: " FontSize="16" Margin="0 20 0 5"/>
+            <TextBlock Text="{Binding Volume}" FontSize="14"/>
+            <TextBlock Text="PriceChange24h in USD: " FontSize="16" Margin="0 20 0 5"/>
+            <TextBlock Text="{Binding PriceChange24h}" FontSize="14"/>
+            <TextBlock Text="Markets: " FontSize="16" Margin="0 20 0 5"/>
 
             <ScrollViewer VerticalScrollBarVisibility="Auto" MaxHeight="200">
                 <ListView ItemsSource="{Binding Markets}">
@@ -50,7 +50,13 @@
                     </ListView.ItemTemplate>
                 </ListView>
             </ScrollViewer>
-            <oxy:PlotView x:Name="MyPlotView" Width="800" Height="300" HorizontalAlignment="Left" />
+            <oxy:PlotView x:Name="MyPlotView" Width="800" Height="300" HorizontalAlignment="Left">
+                <oxy:PlotView.Resources>
+                    <Style TargetType="TextBlock">
+                        <Setter Property="Foreground" Value="White" />
+                    </Style>
+                </oxy:PlotView.Resources>
+            </oxy:PlotView>
 
         </StackPanel>
     </Grid>

@@ -15,7 +15,7 @@
         </Grid.ColumnDefinitions>
 
         <StackPanel Grid.Column="0" Margin="126 69 0 0">
-            <TextBlock Text="About" Width="200" Height="50" Margin="0 10 9 15" FontSize="48" FontFamily="Inter" Foreground="#4F5660">
+            <TextBlock Text="About" Width="200" Height="50" Margin="0 10 9 15" FontSize="48" FontFamily="Inter">
                 <TextBlock.Effect>
                     <DropShadowEffect BlurRadius="4" Direction="-90" RenderingBias="Performance" Opacity="0.2" ShadowDepth="2"/>
                 </TextBlock.Effect>
@@ -35,7 +35,7 @@ Historical data: Analyze the historical performance of cryptocurrencies to make 
 User-friendly interface: Enjoy a clean and intuitive user interface that makes navigating and using our app a breeze.
 Whether you're looking to compare different cryptocurrencies, calculate the value of your holdings, or simply explore the exciting world of digital assets, Cryptocurrency Converter is your go-to app. We're committed to providing you with a reliable, secure, and user-friendly experience.
 
-Start your crypto journey today with Cryptocurrency Converter! Stay informed, make informed decisions, and explore the endless possibilities of the digital currency market." Width="900" Height="900" Margin="0 0 9 0" FontSize="24" FontFamily="Inter" Foreground="#4F5660">
+Start your crypto journey today with Cryptocurrency Converter! Stay informed, make informed decisions, and explore the endless possibilities of the digital currency market." Width="900" Height="900" Margin="0 0 9 0" FontSize="24" FontFamily="Inter">
                 <TextBlock.Effect>
                     <DropShadowEffect BlurRadius="4" Direction="-90" RenderingBias="Performance" Opacity="0.2" ShadowDepth="2"/>
                 </TextBlock.Effect>

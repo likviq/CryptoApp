@@ -7,31 +7,49 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="1080" Width="1920">
 
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                
+            </ResourceDictionary.MergedDictionaries>
+
+            <Style TargetType="ListBox">
+                <Setter Property="BorderThickness" Value="0"/>
+            </Style>
+        </ResourceDictionary>
+    </Window.Resources>
+
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="5*"/>
         </Grid.ColumnDefinitions>
 
-        <StackPanel Grid.Column="0" Background="#F9F9F9">
+        <StackPanel Grid.Column="0">
             <StackPanel Orientation="Horizontal" Width="325" HorizontalAlignment="Left" Margin="39 69 10 25" PreviewMouseLeftButtonUp="HomePageClick">
                 <Image Source="D:\study\images\home.png" Width="25"/>
-                <TextBlock Text="Home" VerticalAlignment="Center" Margin="20 5 0 0" FontFamily="Inter" FontSize="24" Foreground="#4F5660"/>
+                <TextBlock Text="Home" VerticalAlignment="Center" Margin="20 5 0 0" FontFamily="Inter" FontSize="24"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Width="325" HorizontalAlignment="Left" Margin="39 0 10 25" PreviewMouseLeftButtonUp="SearchPageClick">
                 <Image Source="D:\study\images\uploadFile.png" Width="25"/>
-                <TextBlock Text="Search" VerticalAlignment="Center" Margin="20 5 0 0" FontFamily="Inter" FontSize="24" Foreground="#4F5660"/>
+                <TextBlock Text="Search" VerticalAlignment="Center" Margin="20 5 0 0" FontFamily="Inter" FontSize="24"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Width="325" HorizontalAlignment="Left" Margin="39 0 10 25" PreviewMouseLeftButtonUp="ConvertPageClick">
                 <Image Source="D:\study\images\settingsImage.png" Width="25"/>
-                <TextBlock Text="Converter" VerticalAlignment="Center" Margin="20 5 0 0" FontFamily="Inter" FontSize="24" Foreground="#4F5660"/>
+                <TextBlock Text="Converter" VerticalAlignment="Center" Margin="20 5 0 0" FontFamily="Inter" FontSize="24"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Width="325" HorizontalAlignment="Left" Margin="39 0 10 25" PreviewMouseLeftButtonUp="AboutPageClick">
                 <Image Source="D:\study\images\help.png" Width="25"/>
-                <TextBlock Text="About" VerticalAlignment="Center" Margin="20 5 0 0" FontFamily="Inter" FontSize="24" Foreground="#4F5660"/>
+                <TextBlock Text="About" VerticalAlignment="Center" Margin="20 5 0 0" FontFamily="Inter" FontSize="24"/>
             </StackPanel>
+            <StackPanel Orientation="Horizontal" Width="325" HorizontalAlignment="Left" Margin="39 0 10 25">
+                <ToggleButton x:Name="ThemeToggleButton" Width="20" Height="20" Checked="ThemeToggleButton_Checked" Unchecked="ThemeToggleButton_Unchecked"/>
+                <TextBlock Text="Theme change" VerticalAlignment="Center" Margin="20 5 0 0" FontFamily="Inter" FontSize="24"/>
+            </StackPanel>
+            
         </StackPanel>
 
+        
         <StackPanel Grid.Column="1" Margin="126 69 0 0">
 
             <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden" />

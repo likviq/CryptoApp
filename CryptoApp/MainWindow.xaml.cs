@@ -72,5 +72,19 @@ namespace CryptoApp
         {
             MainFrame.Navigate(page);
         }
+
+        private void ThemeToggleButton_Unchecked(object sender, RoutedEventArgs e)
+        {
+            ResourceDictionary lightTheme = new ResourceDictionary();
+            lightTheme.Source = new Uri("LightTheme.xaml", UriKind.RelativeOrAbsolute);
+            Application.Current.Resources.MergedDictionaries.Add(lightTheme);
+        }
+
+        private void ThemeToggleButton_Checked(object sender, RoutedEventArgs e)
+        {
+            ResourceDictionary darkTheme = new ResourceDictionary();
+            darkTheme.Source = new Uri("DarkTheme.xaml", UriKind.RelativeOrAbsolute);
+            Application.Current.Resources.MergedDictionaries.Add(darkTheme);
+        }
     }
 }
