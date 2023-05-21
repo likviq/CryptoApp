@@ -1,0 +1,87 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <!--Background - #4F5660
+    Font - #F9F9F9-->
+    <Style TargetType="Grid">
+        <Setter Property="Background" Value="#4F5660"/>
+    </Style>
+    
+    <Style TargetType="TextBlock">
+        <Setter Property="Foreground" Value="#F9F9F9"/>
+    </Style>
+    
+    <Style TargetType="StackPanel">
+        <Setter Property="Background" Value="#4F5660"/>
+    </Style>
+
+    <Style TargetType="Button">
+        <Setter Property="Background" Value="#4F5660"/>
+        <Setter Property="Foreground" Value="#F9F9F9"/>
+        <Setter Property="BorderThickness" Value="0"/>
+    </Style>
+
+    <Style TargetType="ListBox">
+        <Setter Property="Background" Value="#4F5660"/>
+        <Setter Property="BorderThickness" Value="0"/>
+    </Style>
+
+    <Style TargetType="TextBox">
+        <Setter Property="Background" Value="#4F5660"/>
+        <Setter Property="Foreground" Value="#F9F9F9"/>
+        <Setter Property="BorderThickness" Value="0"/>
+    </Style>
+
+    <Style TargetType="ComboBox">
+        <Setter Property="Background" Value="#4F5660"/>
+        <Setter Property="Foreground" Value="#F9F9F9"/>
+        <Setter Property="BorderThickness" Value="0"/>
+    </Style>
+
+    <Style TargetType="ListView">
+        <Setter Property="Background" Value="#4F5660"/>
+        <Setter Property="Foreground" Value="#F9F9F9"/>
+        <Setter Property="BorderThickness" Value="0"/>
+    </Style>
+
+    <Style TargetType="ScrollViewer">
+        <Setter Property="BorderThickness" Value="0"/>
+    </Style>
+
+    <Style TargetType="DataGrid">
+        <Setter Property="Background" Value="#4F5660"/>
+        <Setter Property="Foreground" Value="#F9F9F9"/>
+        <Setter Property="BorderBrush" Value="#4F5660"/>
+        <Setter Property="RowBackground" Value="#4F5660"/>
+        <Setter Property="RowHeaderStyle">
+            <Setter.Value>
+                <Style TargetType="DataGridRowHeader">
+                    <Setter Property="Background" Value="#4F5660"/>
+                    <Setter Property="Foreground" Value="#F9F9F9"/>
+                    <Setter Property="BorderBrush" Value="#4F5660"/>
+                </Style>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="CellStyle">
+            <Setter.Value>
+                <Style TargetType="DataGridCell">
+                    <Setter Property="Background" Value="#4F5660"/>
+                    <Setter Property="Foreground" Value="#F9F9F9"/>
+                    <Setter Property="BorderBrush" Value="#4F5660"/>
+                </Style>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="ColumnHeaderStyle">
+            <Setter.Value>
+                <Style TargetType="DataGridColumnHeader">
+                    <Setter Property="Background" Value="#4F5660"/>
+                    <Setter Property="Foreground" Value="#F9F9F9"/>
+                    <Setter Property="BorderBrush" Value="#4F5660"/>
+                </Style>
+            </Setter.Value>
+        </Setter>
+        
+        <Setter Property="RowHeight" Value="30"/>
+        <Setter Property="VerticalGridLinesBrush" Value="#F9F9F9"/>
+        <Setter Property="HorizontalGridLinesBrush" Value="#F9F9F9"/>
+    </Style>
+</ResourceDictionary>

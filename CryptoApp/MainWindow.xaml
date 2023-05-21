@@ -7,31 +7,56 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="1080" Width="1920">
 
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Resources/MainWindow.uk-UA.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            
+            <Style TargetType="ListBox">
+                <Setter Property="BorderThickness" Value="0"/>
+            </Style>
+        </ResourceDictionary>
+    </Window.Resources>
+
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="5*"/>
         </Grid.ColumnDefinitions>
 
-        <StackPanel Grid.Column="0" Background="#F9F9F9">
+        <StackPanel Grid.Column="0">
+            <StackPanel.Background>
+                <ImageBrush/>
+            </StackPanel.Background>
             <StackPanel Orientation="Horizontal" Width="325" HorizontalAlignment="Left" Margin="39 69 10 25" PreviewMouseLeftButtonUp="HomePageClick">
                 <Image Source="D:\study\images\home.png" Width="25"/>
-                <TextBlock Text="Home" VerticalAlignment="Center" Margin="20 5 0 0" FontFamily="Inter" FontSize="24" Foreground="#4F5660"/>
+                <TextBlock x:Name="HomeTextBlock" Text="{StaticResource Home}" VerticalAlignment="Center" Margin="20 5 0 0" FontFamily="Inter" FontSize="24"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Width="325" HorizontalAlignment="Left" Margin="39 0 10 25" PreviewMouseLeftButtonUp="SearchPageClick">
                 <Image Source="D:\study\images\uploadFile.png" Width="25"/>
-                <TextBlock Text="Search" VerticalAlignment="Center" Margin="20 5 0 0" FontFamily="Inter" FontSize="24" Foreground="#4F5660"/>
+                <TextBlock x:Name="SearchTextBlock" Text="{StaticResource Search}" VerticalAlignment="Center" Margin="20 5 0 0" FontFamily="Inter" FontSize="24"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Width="325" HorizontalAlignment="Left" Margin="39 0 10 25" PreviewMouseLeftButtonUp="ConvertPageClick">
                 <Image Source="D:\study\images\settingsImage.png" Width="25"/>
-                <TextBlock Text="Converter" VerticalAlignment="Center" Margin="20 5 0 0" FontFamily="Inter" FontSize="24" Foreground="#4F5660"/>
+                <TextBlock x:Name="ConvertTextBlock" Text="{StaticResource Convert}" VerticalAlignment="Center" Margin="20 5 0 0" FontFamily="Inter" FontSize="24"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Width="325" HorizontalAlignment="Left" Margin="39 0 10 25" PreviewMouseLeftButtonUp="AboutPageClick">
                 <Image Source="D:\study\images\help.png" Width="25"/>
-                <TextBlock Text="About" VerticalAlignment="Center" Margin="20 5 0 0" FontFamily="Inter" FontSize="24" Foreground="#4F5660"/>
+                <TextBlock x:Name="AboutTextBlock" Text="{StaticResource About}" VerticalAlignment="Center" Margin="20 5 0 0" FontFamily="Inter" FontSize="24"/>
             </StackPanel>
+            <StackPanel Orientation="Horizontal" Width="325" HorizontalAlignment="Left" Margin="39 0 10 25">
+                <ToggleButton x:Name="ThemeToggleButton" Width="20" Height="20" Checked="ThemeToggleButton_Checked" Unchecked="ThemeToggleButton_Unchecked"/>
+                <TextBlock x:Name="ThemeTextBlock" Text="{StaticResource Theme change}" VerticalAlignment="Center" Margin="20 5 0 0" FontFamily="Inter" FontSize="24"/>
+            </StackPanel>
+            <ComboBox Width="130" Height="30" x:Name="LanguageComboBox" HorizontalAlignment="Left" Margin="39 0 10 25" SelectionChanged="LanguageComboBox_SelectionChanged">
+                <ComboBoxItem Content="Англійська" Tag="en-US" />
+                <ComboBoxItem Content="Українська" Tag="uk-UA" />
+            </ComboBox>
+
         </StackPanel>
 
+        
         <StackPanel Grid.Column="1" Margin="126 69 0 0">
 
             <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden" />
