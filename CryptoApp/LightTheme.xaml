@@ -46,4 +46,42 @@
     <Style TargetType="ScrollViewer">
         <Setter Property="BorderThickness" Value="0"/>
     </Style>
+
+    <Style TargetType="DataGrid">
+        <Setter Property="Background" Value="#F9F9F9"/>
+        <Setter Property="Foreground" Value="#4F5660"/>
+        <Setter Property="BorderBrush" Value="#F9F9F9"/>
+        <Setter Property="RowBackground" Value="#F9F9F9"/>
+        <Setter Property="RowHeaderStyle">
+            <Setter.Value>
+                <Style TargetType="DataGridRowHeader">
+                    <Setter Property="Background" Value="#F9F9F9"/>
+                    <Setter Property="Foreground" Value="#4F5660"/>
+                    <Setter Property="BorderBrush" Value="#F9F9F9"/>
+                </Style>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="CellStyle">
+            <Setter.Value>
+                <Style TargetType="DataGridCell">
+                    <Setter Property="Background" Value="#F9F9F9"/>
+                    <Setter Property="Foreground" Value="#4F5660"/>
+                    <Setter Property="BorderBrush" Value="#F9F9F9"/>
+                </Style>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="ColumnHeaderStyle">
+            <Setter.Value>
+                <Style TargetType="DataGridColumnHeader">
+                    <Setter Property="Background" Value="#F9F9F9"/>
+                    <Setter Property="Foreground" Value="#4F5660"/>
+                    <Setter Property="BorderBrush" Value="#F9F9F9"/>
+                </Style>
+            </Setter.Value>
+        </Setter>
+
+        <Setter Property="RowHeight" Value="30"/>
+        <Setter Property="VerticalGridLinesBrush" Value="#4F5660"/>
+        <Setter Property="HorizontalGridLinesBrush" Value="#4F5660"/>
+    </Style>
 </ResourceDictionary>

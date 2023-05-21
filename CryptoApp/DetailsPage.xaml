@@ -24,32 +24,24 @@
             <TextBlock Text="{Binding PriceChange24h}" FontSize="14"/>
             <TextBlock Text="Markets: " FontSize="16" Margin="0 20 0 5"/>
 
-            <ScrollViewer VerticalScrollBarVisibility="Auto" MaxHeight="200">
-                <ListView ItemsSource="{Binding Markets}">
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="Auto" />
-                                    <ColumnDefinition Width="Auto" />
-                                    <ColumnDefinition Width="Auto" />
-                                    <ColumnDefinition Width="Auto" />
-                                    <ColumnDefinition Width="Auto" />
-                                </Grid.ColumnDefinitions>
-                                <TextBlock Grid.Column="0" Text="{Binding Name}" />
-                                <TextBlock Grid.Column="1" Text=", Price: " />
-                                <TextBlock Grid.Column="2" Text="{Binding CoinPrice}" />
-                                <TextBlock Grid.Column="3" Text=", Url: " />
-                                <TextBlock Grid.Column="4">
-                                    <Hyperlink NavigateUri="{Binding Url}" RequestNavigate="Hyperlink_RequestNavigate">
-                                        <TextBlock Text="{Binding Url}" />
-                                    </Hyperlink>
-                                </TextBlock>
-                            </Grid>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
-            </ScrollViewer>
+            <DataGrid ItemsSource="{Binding Markets}" MaxHeight="300" AutoGenerateColumns="False" Width="700" HorizontalAlignment="Left">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Name" Width="170" Binding="{Binding Name}" />
+                    <DataGridTextColumn Header="Price" Width="120" Binding="{Binding CoinPrice}" />
+                    <DataGridTemplateColumn Header="Url" Width="Auto">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock>
+                            <Hyperlink NavigateUri="{Binding Url}" RequestNavigate="Hyperlink_RequestNavigate">
+                                <TextBlock Text="{Binding Url}"  />
+                            </Hyperlink>
+                        </TextBlock>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+
             <oxy:PlotView x:Name="MyPlotView" Width="800" Height="300" HorizontalAlignment="Left">
                 <oxy:PlotView.Resources>
                     <Style TargetType="TextBlock">
