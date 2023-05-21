@@ -76,14 +76,14 @@ namespace CryptoApp
         private void ThemeToggleButton_Unchecked(object sender, RoutedEventArgs e)
         {
             ResourceDictionary lightTheme = new ResourceDictionary();
-            lightTheme.Source = new Uri("LightTheme.xaml", UriKind.RelativeOrAbsolute);
+            lightTheme.Source = new Uri("Resources/Themes/LightTheme.xaml", UriKind.RelativeOrAbsolute);
             Application.Current.Resources.MergedDictionaries.Add(lightTheme);
         }
 
         private void ThemeToggleButton_Checked(object sender, RoutedEventArgs e)
         {
             ResourceDictionary darkTheme = new ResourceDictionary();
-            darkTheme.Source = new Uri("DarkTheme.xaml", UriKind.RelativeOrAbsolute);
+            darkTheme.Source = new Uri("Resources/Themes/DarkTheme.xaml", UriKind.RelativeOrAbsolute);
             Application.Current.Resources.MergedDictionaries.Add(darkTheme);
         }
 
@@ -92,7 +92,7 @@ namespace CryptoApp
             ComboBoxItem selectedItem = LanguageComboBox.SelectedItem as ComboBoxItem;
             string languageTag = selectedItem.Tag.ToString();
 
-            string resourceFileName = $"Resources/MainWindow.{languageTag}.xaml";
+            string resourceFileName = $"Resources/Localization/MainWindow.{languageTag}.xaml";
             Uri resourceUri = new Uri(resourceFileName, UriKind.Relative);
 
             ResourceDictionary languageResources = new ResourceDictionary();
