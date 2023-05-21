@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace CryptoApp.Services
 {
-    public class CryptoAPI : ICryptoAPI
+    public class CryptoAPIService : ICryptoAPIService
     {
         private readonly HttpClient client;
         private readonly int numberOfTopCurrencies = 10;
@@ -22,7 +22,7 @@ namespace CryptoApp.Services
         private readonly string assetsEndpoint = "/assets";
         private readonly string marketChartEndpoint = "/market_chart?vs_currency=usd&days=30";
 
-        public CryptoAPI()
+        public CryptoAPIService()
         {
             client = new HttpClient();
         }
@@ -30,18 +30,10 @@ namespace CryptoApp.Services
         public async Task<List<string>> GetCurrencyNames()
         {
             string url = coinCapUrl + assetsEndpoint;
-            var response = await client.GetAsync(url);
-
-            if (!response.IsSuccessStatusCode)
-            {
-                return null;
-            }
-
-            var content = await response.Content.ReadAsStringAsync();
+            var responseBody = await RequestPerform(url);
             
-            var data = JsonConvert.DeserializeObject<Dictionary<string, object>>(content);
+            var data = JsonConvert.DeserializeObject<Dictionary<string, object>>(responseBody);
             var dataString = data["data"].ToString();
-
             var currenciesViewModel = JsonConvert.DeserializeObject<List<CurrencyPriceViewModel>>(dataString);
 
             var currencyNamesList = currenciesViewModel.Select(currency => currency.Id).ToList();
@@ -51,17 +43,10 @@ namespace CryptoApp.Services
 
         public async Task<List<SearchCryptoCurrenciesViewModel>?> GetCryptoCurrencies(string search)
         {
-            HttpClient client = new HttpClient();
-
             string url = $"{coinGeskoUrl + searchCoinsEndpoint}";
-            HttpResponseMessage response = await client.GetAsync(url);
-            if (!response.IsSuccessStatusCode)
-            {
-                return null;
-            }
+            var responseBody = await RequestPerform(url);
 
-            string jsonString = await response.Content.ReadAsStringAsync();
-            var data = JsonConvert.DeserializeObject<List<SearchCryptoCurrenciesViewModel>>(jsonString);
+            var data = JsonConvert.DeserializeObject<List<SearchCryptoCurrenciesViewModel>>(responseBody);
 
             var currencies = data
                 .Where(currency => currency.Name.ToLower().Contains(search.ToLower()))
@@ -72,18 +57,15 @@ namespace CryptoApp.Services
 
         public async Task<List<CryptoCurrenciesViewModel>?> GetCryptoCurrencies()
         {
-            HttpClient client = new HttpClient();
-
             string url = $"{coinCapUrl + assetsEndpoint}";
-            HttpResponseMessage response = await client.GetAsync(url);
-            if (!response.IsSuccessStatusCode)
+            var responseBody = await RequestPerform(url);
+
+            if (responseBody == null)
             {
                 return null;
             }
 
-            string jsonString = await response.Content.ReadAsStringAsync();
-
-            var jsonDictionary = JsonConvert.DeserializeObject<Dictionary<string, object>>(jsonString);
+            var jsonDictionary = JsonConvert.DeserializeObject<Dictionary<string, object>>(responseBody);
             var currenciesList = jsonDictionary["data"].ToString();
 
             var currencies = JsonConvert.DeserializeObject<List<CryptoCurrenciesViewModel>>(currenciesList);
@@ -96,16 +78,13 @@ namespace CryptoApp.Services
 
         public async Task<CoinDetailsViewModel> GetCoinDetails(string id)
         {
-            HttpClient client = new HttpClient();
-
             string url = $"{coinGeskoUrl}/coins/{id}";
-            HttpResponseMessage response = await client.GetAsync(url);
-            if (!response.IsSuccessStatusCode)
+            var responseBody = await RequestPerform(url);
+
+            if (responseBody == null)
             {
                 return null;
             }
-
-            string responseBody = await response.Content.ReadAsStringAsync();
 
             var coinDetails = await CoinJsonInfo(responseBody);
             return coinDetails;
@@ -113,18 +92,15 @@ namespace CryptoApp.Services
 
         public async Task<double?> GetCoinPrice(string id)
         {
-            HttpClient client = new HttpClient();
-
             string url = $"{coinCapUrl}{assetsEndpoint}/{id}";
-            HttpResponseMessage response = await client.GetAsync(url);
-            if (!response.IsSuccessStatusCode)
+            var responseBody = await RequestPerform(url);
+
+            if (responseBody == null)
             {
                 return null;
             }
 
-            string jsonString = await response.Content.ReadAsStringAsync();
-            
-            var jsonDictionary = JsonConvert.DeserializeObject<Dictionary<string, object>>(jsonString);
+            var jsonDictionary = JsonConvert.DeserializeObject<Dictionary<string, object>>(responseBody);
             var currenciesList = jsonDictionary["data"].ToString();
 
             var currency = JsonConvert.DeserializeObject<CurrencyPriceViewModel>(currenciesList);
@@ -133,6 +109,37 @@ namespace CryptoApp.Services
             var price = Convert.ToDouble(currencyPrice, new CultureInfo("en-US"));
 
             return price;
+        }
+
+        public async Task<(List<float>, List<float>)?> GetCoinPriceHistory(string id)
+        {
+            string url = $"{coinGeskoUrl}/coins/{id}{marketChartEndpoint}";
+            var responseBody = await RequestPerform(url);
+
+            if (responseBody == null)
+            {
+                return null;
+            }
+
+            var jsonData = JsonConvert.DeserializeObject<Dictionary<string, List<List<float>>>>(responseBody);
+
+            List<float> timestamps = jsonData["prices"].Select(x => x[0]).ToList();
+            List<float> values = jsonData["prices"].Select(x => x[1]).ToList();
+
+            return (timestamps, values);
+        }
+
+        private async Task<string?> RequestPerform(string url)
+        {
+            var response = await client.GetAsync(url);
+
+            if (!response.IsSuccessStatusCode)
+            {
+                return "";
+            }
+
+            var content = await response.Content.ReadAsStringAsync();
+            return content;
         }
 
         private async Task<CoinDetailsViewModel> CoinJsonInfo(string responseBody)
@@ -144,7 +151,7 @@ namespace CryptoApp.Services
             float price = data["market_data"]["current_price"]["usd"];
             float volume = data["market_data"]["total_volume"]["usd"];
             float priceChange24h = data["market_data"]["price_change_24h"];
-            
+
             List<MarketDetails> markets = new List<MarketDetails>();
             foreach (var market in data["tickers"])
             {
@@ -171,26 +178,6 @@ namespace CryptoApp.Services
             };
 
             return viewModel;
-        }
-
-        public async Task<(List<float>, List<float>)?> GetCoinPriceHistory(string id)
-        {
-            HttpClient client = new HttpClient();
-
-            string url = $"{coinGeskoUrl}/coins/{id}{marketChartEndpoint}";
-            HttpResponseMessage response = await client.GetAsync(url);
-            if (!response.IsSuccessStatusCode)
-            {
-                return null;
-            }
-
-            string jsonResponse = await response.Content.ReadAsStringAsync();
-            var jsonData = JsonConvert.DeserializeObject<Dictionary<string, List<List<float>>>>(jsonResponse);
-
-            List<float> timestamps = jsonData["prices"].Select(x => x[0]).ToList();
-            List<float> values = jsonData["prices"].Select(x => x[1]).ToList();
-
-            return (timestamps, values);
         }
     }
 }

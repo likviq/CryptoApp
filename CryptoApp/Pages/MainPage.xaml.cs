@@ -21,8 +21,8 @@ namespace CryptoApp
     /// </summary>
     public partial class MainPage : Page
     {
-        private readonly ICryptoAPI _cryptoAPI;
-        public MainPage(ICryptoAPI cryptoAPI)
+        private readonly ICryptoAPIService _cryptoAPI;
+        public MainPage(ICryptoAPIService cryptoAPI)
         {
             _cryptoAPI = cryptoAPI;
             GetTopCurrencies();

@@ -10,7 +10,7 @@
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="Resources/MainWindow.uk-UA.xaml"/>
+                <ResourceDictionary Source="Resources/Localization/MainWindow.uk-UA.xaml"/>
             </ResourceDictionary.MergedDictionaries>
             
             <Style TargetType="ListBox">
@@ -49,7 +49,7 @@
                 <ToggleButton x:Name="ThemeToggleButton" Width="20" Height="20" Checked="ThemeToggleButton_Checked" Unchecked="ThemeToggleButton_Unchecked"/>
                 <TextBlock x:Name="ThemeTextBlock" Text="{StaticResource Theme change}" VerticalAlignment="Center" Margin="20 5 0 0" FontFamily="Inter" FontSize="24"/>
             </StackPanel>
-            <ComboBox Width="130" Height="30" x:Name="LanguageComboBox" HorizontalAlignment="Left" Margin="39 0 10 25" SelectionChanged="LanguageComboBox_SelectionChanged">
+            <ComboBox Width="130" Height="30" x:Name="LanguageComboBox" HorizontalAlignment="Left" Margin="39 0 10 25" SelectionChanged="LanguageComboBox_SelectionChanged" Foreground="#4F5660">
                 <ComboBoxItem Content="Англійська" Tag="en-US" />
                 <ComboBoxItem Content="Українська" Tag="uk-UA" />
             </ComboBox>

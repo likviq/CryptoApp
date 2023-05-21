@@ -21,8 +21,8 @@ namespace CryptoApp
     /// </summary>
     public partial class SearchPage : Page
     {
-        private readonly ICryptoAPI _cryptoAPI;
-        public SearchPage(ICryptoAPI cryptoAPI)
+        private readonly ICryptoAPIService _cryptoAPI;
+        public SearchPage(ICryptoAPIService cryptoAPI)
         {
             _cryptoAPI = cryptoAPI;
             InitializeComponent();
@@ -43,13 +43,15 @@ namespace CryptoApp
 
             if (string.IsNullOrEmpty(id))
             {
-                
+                MessageBox.Show("field is empty");
+                return;
             }
 
             MainWindow mainWindow = (MainWindow)Window.GetWindow(this);
             if (mainWindow == null)
             {
-
+                MessageBox.Show("main window not found");
+                return;
             }
 
             mainWindow.OpenDetailsPage(id);

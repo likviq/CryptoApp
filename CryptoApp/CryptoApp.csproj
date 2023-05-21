@@ -19,8 +19,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Resources\MainWindow.en-US.xaml" />
-    <Resource Include="Resources\MainWindow.uk-UA.xaml" />
+    <Resource Include="Resources\Localization\MainWindow.en-US.xaml" />
+    <Resource Include="Resources\Localization\MainWindow.uk-UA.xaml" />
   </ItemGroup>
 
 </Project>

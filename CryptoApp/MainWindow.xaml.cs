@@ -21,14 +21,14 @@ namespace CryptoApp
     /// </summary>
     public partial class MainWindow : Window
     {
-        private readonly ICryptoAPI _cryptoAPI;
+        private readonly ICryptoAPIService _cryptoAPI;
 
         public MainWindow()
         {
             InitializeComponent();
         }
 
-        public MainWindow(ICryptoAPI cryptoAPI) : this()
+        public MainWindow(ICryptoAPIService cryptoAPI) : this()
         {
             _cryptoAPI = cryptoAPI;
             OpenMainPage();
@@ -76,14 +76,14 @@ namespace CryptoApp
         private void ThemeToggleButton_Unchecked(object sender, RoutedEventArgs e)
         {
             ResourceDictionary lightTheme = new ResourceDictionary();
-            lightTheme.Source = new Uri("LightTheme.xaml", UriKind.RelativeOrAbsolute);
+            lightTheme.Source = new Uri("Resources/Themes/LightTheme.xaml", UriKind.RelativeOrAbsolute);
             Application.Current.Resources.MergedDictionaries.Add(lightTheme);
         }
 
         private void ThemeToggleButton_Checked(object sender, RoutedEventArgs e)
         {
             ResourceDictionary darkTheme = new ResourceDictionary();
-            darkTheme.Source = new Uri("DarkTheme.xaml", UriKind.RelativeOrAbsolute);
+            darkTheme.Source = new Uri("Resources/Themes/DarkTheme.xaml", UriKind.RelativeOrAbsolute);
             Application.Current.Resources.MergedDictionaries.Add(darkTheme);
         }
 
@@ -92,28 +92,25 @@ namespace CryptoApp
             ComboBoxItem selectedItem = LanguageComboBox.SelectedItem as ComboBoxItem;
             string languageTag = selectedItem.Tag.ToString();
 
-            string resourceFileName = $"Resources/MainWindow.{languageTag}.xaml";
+            string resourceFileName = $"Resources/Localization/MainWindow.{languageTag}.xaml";
             Uri resourceUri = new Uri(resourceFileName, UriKind.Relative);
 
             ResourceDictionary languageResources = new ResourceDictionary();
             languageResources.Source = resourceUri;
 
-            // Оновити ResourceDictionary у вікні
-            this.Resources.MergedDictionaries.Clear();
-            this.Resources.MergedDictionaries.Add(languageResources);
+            Resources.MergedDictionaries.Clear();
+            Resources.MergedDictionaries.Add(languageResources);
 
-            // Оновити локалізацію елементів на сторінці
             UpdateLocalization();
         }
 
         private void UpdateLocalization()
         {
-            // Оновити локалізацію текстових елементів
-            HomeTextBlock.Text = (string)this.Resources["Home"];
-            SearchTextBlock.Text = (string)this.Resources["Search"];
-            ConvertTextBlock.Text = (string)this.Resources["Convert"];
-            AboutTextBlock.Text = (string)this.Resources["About"];
-            ThemeTextBlock.Text = (string)this.Resources["Theme change"];
+            HomeTextBlock.Text = (string)Resources["Home"];
+            SearchTextBlock.Text = (string)Resources["Search"];
+            ConvertTextBlock.Text = (string)Resources["Convert"];
+            AboutTextBlock.Text = (string)Resources["About"];
+            ThemeTextBlock.Text = (string)Resources["Theme change"];
         }
     }
 }

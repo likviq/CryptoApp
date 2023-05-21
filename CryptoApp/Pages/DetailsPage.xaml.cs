@@ -25,9 +25,9 @@ namespace CryptoApp
     /// </summary>
     public partial class DetailsPage : Page
     {
-        private readonly ICryptoAPI _cryptoAPI;
+        private readonly ICryptoAPIService _cryptoAPI;
         private readonly string _id;
-        public DetailsPage(ICryptoAPI cryptoAPI, string id)
+        public DetailsPage(ICryptoAPIService cryptoAPI, string id)
         {
             _cryptoAPI = cryptoAPI;
             _id = id;
@@ -54,7 +54,6 @@ namespace CryptoApp
             }
             catch (Exception ex)
             {
-                // Обробка помилки, якщо не вдалося відкрити посилання
                 Console.WriteLine($"Помилка при відкритті посилання: {ex.Message}");
             }
         }

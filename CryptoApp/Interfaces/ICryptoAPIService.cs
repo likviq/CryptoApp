@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CryptoApp.Interfaces
 {
-    public interface ICryptoAPI
+    public interface ICryptoAPIService
     {
         Task<List<string>> GetCurrencyNames();
         Task<List<SearchCryptoCurrenciesViewModel>?> GetCryptoCurrencies(string search);

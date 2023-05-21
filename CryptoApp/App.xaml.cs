@@ -17,11 +17,11 @@ namespace CryptoApp
         {
             var services = new ServiceCollection();
 
-            services.AddSingleton<ICryptoAPI, CryptoAPI>();
+            services.AddSingleton<ICryptoAPIService, CryptoAPIService>();
 
             services.AddSingleton<MainWindow>(serviceProvider =>
             {
-                var cryptoAPI = serviceProvider.GetRequiredService<ICryptoAPI>();
+                var cryptoAPI = serviceProvider.GetRequiredService<ICryptoAPIService>();
                 return new MainWindow(cryptoAPI);
             });
 
