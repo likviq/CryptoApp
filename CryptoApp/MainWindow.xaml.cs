@@ -86,5 +86,34 @@ namespace CryptoApp
             darkTheme.Source = new Uri("DarkTheme.xaml", UriKind.RelativeOrAbsolute);
             Application.Current.Resources.MergedDictionaries.Add(darkTheme);
         }
+
+        private void LanguageComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ComboBoxItem selectedItem = LanguageComboBox.SelectedItem as ComboBoxItem;
+            string languageTag = selectedItem.Tag.ToString();
+
+            string resourceFileName = $"Resources/MainWindow.{languageTag}.xaml";
+            Uri resourceUri = new Uri(resourceFileName, UriKind.Relative);
+
+            ResourceDictionary languageResources = new ResourceDictionary();
+            languageResources.Source = resourceUri;
+
+            // Оновити ResourceDictionary у вікні
+            this.Resources.MergedDictionaries.Clear();
+            this.Resources.MergedDictionaries.Add(languageResources);
+
+            // Оновити локалізацію елементів на сторінці
+            UpdateLocalization();
+        }
+
+        private void UpdateLocalization()
+        {
+            // Оновити локалізацію текстових елементів
+            HomeTextBlock.Text = (string)this.Resources["Home"];
+            SearchTextBlock.Text = (string)this.Resources["Search"];
+            ConvertTextBlock.Text = (string)this.Resources["Convert"];
+            AboutTextBlock.Text = (string)this.Resources["About"];
+            ThemeTextBlock.Text = (string)this.Resources["Theme change"];
+        }
     }
 }
