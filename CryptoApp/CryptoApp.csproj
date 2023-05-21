@@ -8,6 +8,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Images\help.png" />
+    <None Remove="Images\home.png" />
+    <None Remove="Images\settingsImage.png" />
+    <None Remove="Images\uploadFile.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Page Remove="Resources\MainWindow.en-US.xaml" />
     <Page Remove="Resources\MainWindow.uk-UA.xaml" />
   </ItemGroup>
@@ -19,6 +26,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Images\help.png" />
+    <Resource Include="Images\home.png" />
+    <Resource Include="Images\settingsImage.png" />
+    <Resource Include="Images\uploadFile.png" />
     <Resource Include="Resources\Localization\MainWindow.en-US.xaml" />
     <Resource Include="Resources\Localization\MainWindow.uk-UA.xaml" />
   </ItemGroup>
