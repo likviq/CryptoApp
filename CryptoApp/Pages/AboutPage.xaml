@@ -20,26 +20,30 @@
                     <DropShadowEffect BlurRadius="4" Direction="-90" RenderingBias="Performance" Opacity="0.2" ShadowDepth="2"/>
                 </TextBlock.Effect>
             </TextBlock>
-            <TextBlock TextWrapping="Wrap" Text="Welcome to our Cryptocurrency Converter App!
-
-At Cryptocurrency Converter, we aim to provide you with a seamless and efficient way to explore and convert various cryptocurrencies. Whether you're a seasoned trader, a crypto enthusiast, or simply curious about the world of digital currencies, our app is designed to meet your needs.
-
-With our app, you can stay up-to-date with the latest cryptocurrency prices, track market trends, and easily convert one cryptocurrency to another. We support a wide range of cryptocurrencies, including Bitcoin, Ethereum, Litecoin, Ripple, and many more. Our app retrieves real-time data from reliable sources, ensuring accurate and reliable conversion rates.
-
-Key Features:
-
-Real-time cryptocurrency prices: Stay informed about the current market prices of your favorite cryptocurrencies.
-Easy conversion: Seamlessly convert one cryptocurrency to another with just a few clicks.
-Comprehensive currency support: Access a vast selection of cryptocurrencies and explore their conversion rates.
-Historical data: Analyze the historical performance of cryptocurrencies to make informed investment decisions.
-User-friendly interface: Enjoy a clean and intuitive user interface that makes navigating and using our app a breeze.
-Whether you're looking to compare different cryptocurrencies, calculate the value of your holdings, or simply explore the exciting world of digital assets, Cryptocurrency Converter is your go-to app. We're committed to providing you with a reliable, secure, and user-friendly experience.
-
-Start your crypto journey today with Cryptocurrency Converter! Stay informed, make informed decisions, and explore the endless possibilities of the digital currency market." Width="900" Height="900" Margin="0 0 9 0" FontSize="24" FontFamily="Inter">
-                <TextBlock.Effect>
-                    <DropShadowEffect BlurRadius="4" Direction="-90" RenderingBias="Performance" Opacity="0.2" ShadowDepth="2"/>
-                </TextBlock.Effect>
+            <TextBlock TextWrapping="Wrap" Width="900" Height="900" Margin="0 0 9 0" FontSize="24" FontFamily="Inter">
+                <Run>Welcome to our Cryptocurrency Converter App!</Run>
+                <LineBreak />
+                <LineBreak />
+                <Run>At Cryptocurrency Converter, we aim to provide you with a seamless and efficient way to explore and convert various cryptocurrencies. Whether you're a seasoned trader, a crypto enthusiast, or simply curious about the world of digital currencies, our app is designed to meet your needs.</Run>
+                <LineBreak />
+                <LineBreak />
+                <Run>With our app, you can stay up-to-date with the latest cryptocurrency prices, track market trends, and easily convert one cryptocurrency to another. We support a wide range of cryptocurrencies, including Bitcoin, Ethereum, Litecoin, Ripple, and many more. Our app retrieves real-time data from reliable sources, ensuring accurate and reliable conversion rates.</Run>
+                <LineBreak />
+                <LineBreak />
+                <Run>Key Features:</Run>
+                <LineBreak />
+                <LineBreak />
+                <Run>- Real-time cryptocurrency prices: Stay informed about the current market prices of your favorite cryptocurrencies.</Run>
+                <LineBreak />
+                <Run>- Easy conversion: Seamlessly convert one cryptocurrency to another with just a few clicks.</Run>
+                <LineBreak />
+                <Run>- Comprehensive currency support: Access a vast selection of cryptocurrencies and explore their conversion rates.</Run>
+                <LineBreak />
+                <Run>- Historical data: Analyze the historical performance of cryptocurrencies to make informed investment decisions.</Run>
+                <LineBreak />
+                <Run>- User-friendly interface: Enjoy a clean and intuitive user interface that makes navigating and using our app a breeze.</Run>
             </TextBlock>
+
         </StackPanel>
 
     </Grid>
