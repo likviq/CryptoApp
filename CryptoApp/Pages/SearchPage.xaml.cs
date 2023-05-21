@@ -21,8 +21,8 @@ namespace CryptoApp
     /// </summary>
     public partial class SearchPage : Page
     {
-        private readonly ICryptoAPI _cryptoAPI;
-        public SearchPage(ICryptoAPI cryptoAPI)
+        private readonly ICryptoAPIService _cryptoAPI;
+        public SearchPage(ICryptoAPIService cryptoAPI)
         {
             _cryptoAPI = cryptoAPI;
             InitializeComponent();

@@ -21,14 +21,14 @@ namespace CryptoApp
     /// </summary>
     public partial class MainWindow : Window
     {
-        private readonly ICryptoAPI _cryptoAPI;
+        private readonly ICryptoAPIService _cryptoAPI;
 
         public MainWindow()
         {
             InitializeComponent();
         }
 
-        public MainWindow(ICryptoAPI cryptoAPI) : this()
+        public MainWindow(ICryptoAPIService cryptoAPI) : this()
         {
             _cryptoAPI = cryptoAPI;
             OpenMainPage();

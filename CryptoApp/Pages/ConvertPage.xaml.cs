@@ -21,11 +21,11 @@ namespace CryptoApp
     /// </summary>
     public partial class ConvertPage : Page
     {
-        private readonly ICryptoAPI _cryptoAPI;
+        private readonly ICryptoAPIService _cryptoAPI;
         private string currencyFrom;
         private string currencyTo;
         
-        public ConvertPage(ICryptoAPI cryptoAPI)
+        public ConvertPage(ICryptoAPIService cryptoAPI)
         {
             _cryptoAPI = cryptoAPI;
             SetCurrenciesDropdown();
