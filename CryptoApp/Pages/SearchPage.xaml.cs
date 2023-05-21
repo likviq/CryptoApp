@@ -43,13 +43,15 @@ namespace CryptoApp
 
             if (string.IsNullOrEmpty(id))
             {
-                
+                MessageBox.Show("field is empty");
+                return;
             }
 
             MainWindow mainWindow = (MainWindow)Window.GetWindow(this);
             if (mainWindow == null)
             {
-
+                MessageBox.Show("main window not found");
+                return;
             }
 
             mainWindow.OpenDetailsPage(id);

@@ -54,7 +54,6 @@ namespace CryptoApp
             }
             catch (Exception ex)
             {
-                // Обробка помилки, якщо не вдалося відкрити посилання
                 Console.WriteLine($"Помилка при відкритті посилання: {ex.Message}");
             }
         }

@@ -60,6 +60,11 @@ namespace CryptoApp.Services
             string url = $"{coinCapUrl + assetsEndpoint}";
             var responseBody = await RequestPerform(url);
 
+            if (responseBody == null)
+            {
+                return null;
+            }
+
             var jsonDictionary = JsonConvert.DeserializeObject<Dictionary<string, object>>(responseBody);
             var currenciesList = jsonDictionary["data"].ToString();
 
@@ -76,6 +81,11 @@ namespace CryptoApp.Services
             string url = $"{coinGeskoUrl}/coins/{id}";
             var responseBody = await RequestPerform(url);
 
+            if (responseBody == null)
+            {
+                return null;
+            }
+
             var coinDetails = await CoinJsonInfo(responseBody);
             return coinDetails;
         }
@@ -84,6 +94,11 @@ namespace CryptoApp.Services
         {
             string url = $"{coinCapUrl}{assetsEndpoint}/{id}";
             var responseBody = await RequestPerform(url);
+
+            if (responseBody == null)
+            {
+                return null;
+            }
 
             var jsonDictionary = JsonConvert.DeserializeObject<Dictionary<string, object>>(responseBody);
             var currenciesList = jsonDictionary["data"].ToString();
@@ -100,6 +115,11 @@ namespace CryptoApp.Services
         {
             string url = $"{coinGeskoUrl}/coins/{id}{marketChartEndpoint}";
             var responseBody = await RequestPerform(url);
+
+            if (responseBody == null)
+            {
+                return null;
+            }
 
             var jsonData = JsonConvert.DeserializeObject<Dictionary<string, List<List<float>>>>(responseBody);
 
